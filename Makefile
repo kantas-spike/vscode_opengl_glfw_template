@@ -4,6 +4,13 @@ SRC_PATH = src
 OBJ_PATH = obj
 BIN_PATH = bin
 
+# Forcefully create required directories
+REQUIRED_DIRS = $(SRC_PATH) $(OBJ_PATH) $(BIN_PATH)
+_MKDIRS := $(shell for d in $(REQUIRED_DIRS); \
+							do															\
+								[[ -d $$d ]] || mkdir -p $$d; \
+							done)
+
 APP_NAME = main
 
 SRCS = $(SRC_PATH)/*.cpp
@@ -41,12 +48,12 @@ LINKER_FLAGS = -lglfw  -lGLEW -framework Cocoa -framework OpenGL -framework IOKi
 # APP_NAME specifies the name of our exectuable
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
-	$(CC) -o $@ -c $< $(COMPILER_FLAGS) 
+	$(CC) -o $@ -c $< $(COMPILER_FLAGS)
 
 #This is the target that compiles our executable
 $(APP_NAME) : $(OBJ)
 	$(CC) $(OBJ) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(APP_PATH)
-	
+
 # clean all sources
 clean:
 	$(RM) -rf $(OBJS)
