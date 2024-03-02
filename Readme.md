@@ -9,11 +9,11 @@ here is how you can bootstrap an Opengl project with vscode
 - Install GLFW and Glew this way
 
 ```sh
-brew install glfw3
+brew install glfw
 brew install glew
 ```
 
-- Pull this repo 
+- Pull this repo
 - Create a bin and obj directory in project root directory
 
 And you're ready to start
