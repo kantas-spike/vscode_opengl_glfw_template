@@ -7,9 +7,9 @@ BIN_PATH = bin
 # Forcefully create required directories
 REQUIRED_DIRS = $(SRC_PATH) $(OBJ_PATH) $(BIN_PATH)
 _MKDIRS := $(shell for d in $(REQUIRED_DIRS); \
-							do															\
-								[[ -d $$d ]] || mkdir -p $$d; \
-							done)
+					do															\
+						[[ -d $$d ]] || mkdir -p $$d; \
+					done)
 
 APP_NAME = main
 
